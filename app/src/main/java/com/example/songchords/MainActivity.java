@@ -12,6 +12,7 @@ import android.support.v7.widget.RecyclerView;
 import android.util.TypedValue;
 import android.view.View;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -45,15 +46,9 @@ public class MainActivity extends AppCompatActivity {
         recyclerView.addItemDecoration(new GridSpacingItemDecoration(2, dpToPx(10), true));
         // define an adapter
 
-        /*RecyclerView.LayoutManager mLayoutManager = new LinearLayoutManager(this);
-        recyclerView.setLayoutManager(mLayoutManager);
-        recyclerView.setItemAnimator(new DefaultItemAnimator());
-        recyclerView.addItemDecoration(new DividerItemDecoration(this, LinearLayoutManager.VERTICAL));*/
-
         recyclerView.setAdapter(songsAdapter);
 
-
-        //setContentView(R.layout.songdescription);
+        recyclerView.addOnItemTouchListener(new TouchListener(this, recyclerView,new TouchListener.ClickListener()));
 
     }
 

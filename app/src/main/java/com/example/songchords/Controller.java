@@ -37,7 +37,7 @@ public class Controller {
 
         //On crée un objet retrofit
         Retrofit retrofit = new Retrofit.Builder()
-                .baseUrl("https://raw.githubusercontent.com/Metasilveur/MobileFireEmblem/master/")
+                .baseUrl("https://raw.githubusercontent.com/TolsyLaurenceESIEA/TolsyLaurenceESIEA.github.io/master/")
                 .addConverterFactory(GsonConverterFactory.create(gson))
                 .build();
 
@@ -51,12 +51,7 @@ public class Controller {
             public void onResponse(Call<SongsResponse> call, Response<SongsResponse> response) {
                 SongsResponse songsResponse = response.body();
                 List<Songs> listSongs = songsResponse.getSongs();
-                /*List<Songs> listSongs = new ArrayList<>();
-                listSongs.add(new Songs("azerty","qwerty","https://www.elastic.co/assets/bltada7771f270d08f6/enhanced-buzz-1492-1379411828-15.jpg"));
-                listSongs.add(new Songs("azerty","qwerty","https://www.elastic.co/assets/bltada7771f270d08f6/enhanced-buzz-1492-1379411828-15.jpg"));
-                listSongs.add(new Songs("azerty","qwerty","https://www.elastic.co/assets/bltada7771f270d08f6/enhanced-buzz-1492-1379411828-15.jpg"));
-                listSongs.add(new Songs("azerty","qwerty","https://www.elastic.co/assets/bltada7771f270d08f6/enhanced-buzz-1492-1379411828-15.jpg"));
-                */view.showList(listSongs);
+                view.showList(listSongs);
             }
 
             @Override

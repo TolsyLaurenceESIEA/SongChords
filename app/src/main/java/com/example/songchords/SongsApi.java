@@ -4,6 +4,6 @@ import retrofit2.http.GET;
 
 public interface SongsApi {
 
-    @GET("FireApi.json")
+    @GET("songsapi.json")
     Call<SongsResponse> getAllSongs();
 }

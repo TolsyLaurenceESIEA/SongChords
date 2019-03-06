@@ -3,19 +3,13 @@ package com.example.songchords;
 import com.google.gson.annotations.SerializedName;
 
 public class Songs {
-    @SerializedName("name")
+    @SerializedName("Name")
     public String Name;
-    @SerializedName("title")
+    @SerializedName("Artist")
     public String Artist;
     @SerializedName("URL")
     public String URL;
-/*
-    public Songs(String name, String artist, String URL) {
-        Name = name;
-        Artist = artist;
-        this.URL = URL;
-    }
-*/
+
     public String getName() {
         return Name;
     }

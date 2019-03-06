@@ -4,10 +4,10 @@ import com.google.gson.annotations.SerializedName;
 import java.util.List;
 
 public class SongsResponse {
-    @SerializedName("heroes")
-    private List<Songs> heroes;
+    @SerializedName("Songs")
+    private List<Songs> songs;
 
-    public List<com.example.songchords.Songs> getSongs() {
-        return heroes;
+    public List<Songs> getSongs() {
+        return songs;
     }
 }

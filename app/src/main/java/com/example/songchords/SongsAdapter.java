@@ -50,9 +50,9 @@ public class SongsAdapter extends RecyclerView.Adapter<SongsAdapter.MyViewHolder
         holder.name.setText(songs.getName());
         holder.artist.setText(songs.getArtist());
 
-        /*Glide.with(context)
+        Glide.with(context)
                 .load(songs.getURL())
-                .into(holder.image);*/
+                .into(holder.image);
     }
 
     @Override
