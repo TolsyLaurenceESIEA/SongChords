@@ -1,5 +1,6 @@
 package com.example.songchords;
 
+import android.content.Intent;
 import android.content.res.Resources;
 import android.graphics.Rect;
 import android.os.Bundle;
@@ -23,6 +24,7 @@ public class MainActivity extends AppCompatActivity {
     private SongsAdapter songsAdapter;
     private RecyclerView.LayoutManager layoutManager;
     private Controller controller;
+    private List<String> test; //test
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -37,6 +39,8 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void showList (final List<Songs> listSongs){
+
+        test = new ArrayList<String>(); //test
         songsAdapter = new SongsAdapter(this, listSongs);
         recyclerView.setHasFixedSize(true);
 
@@ -48,7 +52,16 @@ public class MainActivity extends AppCompatActivity {
 
         recyclerView.setAdapter(songsAdapter);
 
-        recyclerView.addOnItemTouchListener(new TouchListener(this, recyclerView,new TouchListener.ClickListener()));
+        recyclerView.addOnItemTouchListener(new TouchListener(getApplicationContext(), recyclerView, new TouchListener.ClickListener() {
+            @Override
+            public void onClick(View view, int position) {
+                Songs songs = listSongs.get(position);
+                Toast.makeText(getApplicationContext(), songs.getName(), Toast.LENGTH_SHORT).show();
+                Intent intent = new Intent(MainActivity.this, TabActivity.class);
+                intent.putStringArrayListExtra("test", (ArrayList<String>) songs.getLyrics());
+                startActivity(intent);
+            }
+        }));
 
     }
 
