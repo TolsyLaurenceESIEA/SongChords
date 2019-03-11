@@ -1,4 +1,4 @@
-package com.example.songchords;
+package com.example.songchords.Controller;
 
 import android.content.Context;
 import android.support.v7.widget.RecyclerView;

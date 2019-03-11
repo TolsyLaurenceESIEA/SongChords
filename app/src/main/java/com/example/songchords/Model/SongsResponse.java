@@ -1,4 +1,4 @@
-package com.example.songchords;
+package com.example.songchords.Model;
 import com.google.gson.annotations.SerializedName;
 
 import java.util.List;

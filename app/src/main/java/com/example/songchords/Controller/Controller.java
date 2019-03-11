@@ -1,12 +1,14 @@
-package com.example.songchords;
+package com.example.songchords.Controller;
 
 import android.util.Log;
-import android.widget.TextView;
 
+import com.example.songchords.Model.Songs;
+import com.example.songchords.Model.SongsApi;
+import com.example.songchords.Model.SongsResponse;
+import com.example.songchords.View.MainActivity;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 
-import java.util.ArrayList;
 import java.util.List;
 
 import retrofit2.Call;

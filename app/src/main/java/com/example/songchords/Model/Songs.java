@@ -1,7 +1,8 @@
-package com.example.songchords;
+package com.example.songchords.Model;
 
 import com.google.gson.annotations.SerializedName;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class Songs {
@@ -11,8 +12,10 @@ public class Songs {
     public String Artist;
     @SerializedName("URL")
     public String URL;
-    @SerializedName("Lyrics")
-    private List<String> lyrics;
+    @SerializedName("Lyric")
+    public ArrayList<String> lyrics;
+    @SerializedName("Capo")
+    public String Capo;
 
     public String getName() {
         return Name;
@@ -26,7 +29,11 @@ public class Songs {
         return URL;
     }
 
-    public List<String> getLyrics() {
+    public ArrayList<String> getLyrics() {
         return lyrics;
+    }
+
+    public String getCapo() {
+        return Capo;
     }
 }

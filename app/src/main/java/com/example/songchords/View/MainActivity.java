@@ -1,4 +1,4 @@
-package com.example.songchords;
+package com.example.songchords.View;
 
 import android.content.Intent;
 import android.content.res.Resources;
@@ -6,14 +6,18 @@ import android.graphics.Rect;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.DefaultItemAnimator;
-import android.support.v7.widget.DividerItemDecoration;
 import android.support.v7.widget.GridLayoutManager;
-import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 import android.util.TypedValue;
 import android.view.View;
-import android.widget.TextView;
 import android.widget.Toast;
+
+import com.example.songchords.Controller.Controller;
+import com.example.songchords.R;
+import com.example.songchords.Model.Songs;
+import com.example.songchords.Controller.SongsAdapter;
+import com.example.songchords.Controller.TouchListener;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -24,7 +28,6 @@ public class MainActivity extends AppCompatActivity {
     private SongsAdapter songsAdapter;
     private RecyclerView.LayoutManager layoutManager;
     private Controller controller;
-    private List<String> test; //test
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -40,7 +43,6 @@ public class MainActivity extends AppCompatActivity {
 
     public void showList (final List<Songs> listSongs){
 
-        test = new ArrayList<String>(); //test
         songsAdapter = new SongsAdapter(this, listSongs);
         recyclerView.setHasFixedSize(true);
 
@@ -58,11 +60,17 @@ public class MainActivity extends AppCompatActivity {
                 Songs songs = listSongs.get(position);
                 Toast.makeText(getApplicationContext(), songs.getName(), Toast.LENGTH_SHORT).show();
                 Intent intent = new Intent(MainActivity.this, TabActivity.class);
-                intent.putStringArrayListExtra("test", (ArrayList<String>) songs.getLyrics());
+                putExtraItems(intent,songs);
                 startActivity(intent);
             }
         }));
 
+    }
+    public void putExtraItems(Intent intent, Songs songs){
+        intent.putStringArrayListExtra("lyric", songs.getLyrics());//lyric
+        intent.putExtra("title", songs.getName());
+        intent.putExtra("image", songs.getURL());
+        intent.putExtra("artist", songs.getArtist());
     }
 
     public class GridSpacingItemDecoration extends RecyclerView.ItemDecoration {
