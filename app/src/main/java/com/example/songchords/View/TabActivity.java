@@ -48,7 +48,6 @@ public class TabActivity extends AppCompatActivity {
         ArrayList<String> lyrics = getIntent().getStringArrayListExtra("lyric");
         ArrayValueAddFunction(lyrics);
         TextView lyricsArray = findViewById(R.id.lyrictab);
-        lyricsArray.setTextSize(10);
         for (int i=0; i<StringArray.size();i++){
             lyricsArray.append(StringArray.get(i));
             lyricsArray.append("\n");

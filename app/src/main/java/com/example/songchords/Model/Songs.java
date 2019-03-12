@@ -16,6 +16,8 @@ public class Songs {
     public ArrayList<String> lyrics;
     @SerializedName("Capo")
     public String Capo;
+    @SerializedName("Chords")
+    public Chords chords;
 
     public String getName() {
         return Name;
@@ -35,5 +37,9 @@ public class Songs {
 
     public String getCapo() {
         return Capo;
+    }
+
+    public Chords getChords() {
+        return chords;
     }
 }
