@@ -19,7 +19,7 @@ import com.example.songchords.Model.Songs;
 import com.example.songchords.Controller.SongsAdapter;
 import com.example.songchords.Controller.TouchListener;
 
-import java.util.ArrayList;
+import java.io.Serializable;
 import java.util.List;
 
 public class MainActivity extends AppCompatActivity {
@@ -67,11 +67,12 @@ public class MainActivity extends AppCompatActivity {
 
     }
     public void putExtraItems(Intent intent, Songs songs){
-
+        List<Chords> chordsList =controller.chordsList;
         intent.putStringArrayListExtra("lyric", songs.getLyrics());//lyric
         intent.putExtra("title", songs.getName());
         intent.putExtra("image", songs.getURL());
         intent.putExtra("artist", songs.getArtist());
+        intent.putExtra("chords", (Serializable) chordsList);
 
 
     }
