@@ -4,7 +4,6 @@ import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.widget.ImageView;
-import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import com.bumptech.glide.Glide;
@@ -52,6 +51,10 @@ public class TabActivity extends AppCompatActivity {
             lyricsArray.append(StringArray.get(i));
             lyricsArray.append("\n");
         }
+
+        /*String chord_name = getIntent().getExtras().getString("chords_name");
+        TextView chordName = findViewById(R.id.chordsName);
+        chordName.setText(chord_name);*/
     }
 
     private void ArrayValueAddFunction(ArrayList<String> list) {

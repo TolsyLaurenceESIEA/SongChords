@@ -17,7 +17,6 @@
         android:layout_marginTop="12dp"
         android:layout_marginEnd="254dp"
         android:layout_weight="70"
-        android:src="@mipmap/ic_launcher"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
@@ -55,11 +54,12 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <Button
+        android:id="@+id/chordsName"
         android:layout_width="50dp"
         android:layout_height="50dp"
         android:layout_marginTop="150dp"
         android:layout_marginLeft="20dp"
-        android:text="Em" />
+        />
 
     <ScrollView
         android:layout_width="match_parent"

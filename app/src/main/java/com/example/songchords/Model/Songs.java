@@ -3,7 +3,6 @@ package com.example.songchords.Model;
 import com.google.gson.annotations.SerializedName;
 
 import java.util.ArrayList;
-import java.util.List;
 
 public class Songs {
     @SerializedName("Name")
@@ -16,8 +15,8 @@ public class Songs {
     public ArrayList<String> lyrics;
     @SerializedName("Capo")
     public String Capo;
-    @SerializedName("Chords")
-    public Chords chords;
+    /*@SerializedName("Chords")
+    public Chords chords;*/
 
     public String getName() {
         return Name;
@@ -39,7 +38,7 @@ public class Songs {
         return Capo;
     }
 
-    public Chords getChords() {
+   /* public Chords getChords() {
         return chords;
-    }
+    }*/
 }

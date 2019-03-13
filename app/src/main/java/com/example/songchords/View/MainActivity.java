@@ -14,6 +14,7 @@ import android.view.View;
 import android.widget.Toast;
 
 import com.example.songchords.Controller.Controller;
+//import com.example.songchords.Model.Chords;
 import com.example.songchords.R;
 import com.example.songchords.Model.Songs;
 import com.example.songchords.Controller.SongsAdapter;
@@ -58,6 +59,7 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View view, int position) {
                 Songs songs = listSongs.get(position);
+                //Chords chords = songs.getChords();
                 Toast.makeText(getApplicationContext(), songs.getName(), Toast.LENGTH_SHORT).show();
                 Intent intent = new Intent(MainActivity.this, TabActivity.class);
                 putExtraItems(intent,songs);
@@ -71,6 +73,7 @@ public class MainActivity extends AppCompatActivity {
         intent.putExtra("title", songs.getName());
         intent.putExtra("image", songs.getURL());
         intent.putExtra("artist", songs.getArtist());
+        //intent.putExtra("chords_name",chords.getName());
     }
 
     public class GridSpacingItemDecoration extends RecyclerView.ItemDecoration {
