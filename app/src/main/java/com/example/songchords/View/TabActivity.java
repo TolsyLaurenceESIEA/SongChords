@@ -51,10 +51,6 @@ public class TabActivity extends AppCompatActivity {
             lyricsArray.append(StringArray.get(i));
             lyricsArray.append("\n");
         }
-
-        /*String chord_name = getIntent().getExtras().getString("chords_name");
-        TextView chordName = findViewById(R.id.chordsName);
-        chordName.setText(chord_name);*/
     }
 
     private void ArrayValueAddFunction(ArrayList<String> list) {

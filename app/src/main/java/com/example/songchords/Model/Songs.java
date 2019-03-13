@@ -6,17 +6,23 @@ import java.util.ArrayList;
 
 public class Songs {
     @SerializedName("Name")
-    public String Name;
+    private String Name;
     @SerializedName("Artist")
-    public String Artist;
+    private String Artist;
     @SerializedName("URL")
-    public String URL;
+    private String URL;
     @SerializedName("Lyric")
-    public ArrayList<String> lyrics;
+    private ArrayList<String> lyrics;
     @SerializedName("Capo")
-    public String Capo;
-    /*@SerializedName("Chords")
-    public Chords chords;*/
+    private String Capo;
+
+    public Songs(String name, String artist, String URL, ArrayList<String> lyrics, String capo) {
+        Name = name;
+        Artist = artist;
+        this.URL = URL;
+        this.lyrics = lyrics;
+        Capo = capo;
+    }
 
     public String getName() {
         return Name;
@@ -38,7 +44,4 @@ public class Songs {
         return Capo;
     }
 
-   /* public Chords getChords() {
-        return chords;
-    }*/
 }
