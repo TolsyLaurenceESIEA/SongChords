@@ -13,11 +13,13 @@ import android.view.View;
 import android.widget.Toast;
 
 import com.example.songchords.Controller.Controller;
+import com.example.songchords.Model.Chords;
 import com.example.songchords.R;
 import com.example.songchords.Model.Songs;
 import com.example.songchords.Controller.SongsAdapter;
 import com.example.songchords.Controller.TouchListener;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class MainActivity extends AppCompatActivity {
@@ -65,10 +67,13 @@ public class MainActivity extends AppCompatActivity {
 
     }
     public void putExtraItems(Intent intent, Songs songs){
+
         intent.putStringArrayListExtra("lyric", songs.getLyrics());//lyric
         intent.putExtra("title", songs.getName());
         intent.putExtra("image", songs.getURL());
         intent.putExtra("artist", songs.getArtist());
+
+
     }
 
     public class GridSpacingItemDecoration extends RecyclerView.ItemDecoration {

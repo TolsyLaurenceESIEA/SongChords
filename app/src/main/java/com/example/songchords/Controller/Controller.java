@@ -2,6 +2,7 @@ package com.example.songchords.Controller;
 
 import android.util.Log;
 
+import com.example.songchords.Model.Chords;
 import com.example.songchords.Model.Songs;
 import com.example.songchords.Model.SongsApi;
 import com.example.songchords.Model.SongsResponse;
@@ -20,6 +21,8 @@ import retrofit2.converter.gson.GsonConverterFactory;
 public class Controller {
 
     private MainActivity view;
+    public List<Songs> listSongs;
+    public List<Chords> chordsList;
 
     public Controller(MainActivity view) {
         this.view = view;
@@ -52,7 +55,8 @@ public class Controller {
             @Override
             public void onResponse(Call<SongsResponse> call, Response<SongsResponse> response) {
                 SongsResponse songsResponse = response.body();
-                List<Songs> listSongs = songsResponse.getSongs();
+                listSongs = songsResponse.getSongs();
+                chordsList = songsResponse.getChords();
                 view.showList(listSongs);
             }
 

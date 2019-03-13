@@ -8,4 +8,5 @@ public interface SongsApi {
 
     @GET("songsapi.json")
     Call<SongsResponse> getAllSongs();
+
 }
