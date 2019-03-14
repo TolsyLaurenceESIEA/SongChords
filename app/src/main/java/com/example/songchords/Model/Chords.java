@@ -2,14 +2,16 @@ package com.example.songchords.Model;
 
 import com.google.gson.annotations.SerializedName;
 
-public class Chords {
+import java.io.Serializable;
+
+public class Chords  implements Serializable {
     @SerializedName("Name")
     public String Name;
     @SerializedName("URL")
     public String URL;
 
     public Chords(String name, String URL) {
-        Name = name;
+        this.Name = name;
         this.URL = URL;
     }
 

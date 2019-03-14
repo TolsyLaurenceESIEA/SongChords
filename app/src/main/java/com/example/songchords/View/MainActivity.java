@@ -3,6 +3,7 @@ package com.example.songchords.View;
 import android.content.Intent;
 import android.content.res.Resources;
 import android.graphics.Rect;
+import android.os.Build;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.DefaultItemAnimator;
@@ -10,6 +11,7 @@ import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.util.TypedValue;
 import android.view.View;
+import android.view.WindowManager;
 import android.widget.Toast;
 
 import com.example.songchords.Controller.Controller;
@@ -20,6 +22,7 @@ import com.example.songchords.Controller.SongsAdapter;
 import com.example.songchords.Controller.TouchListener;
 
 import java.io.Serializable;
+import java.util.ArrayList;
 import java.util.List;
 
 public class MainActivity extends AppCompatActivity {
@@ -33,7 +36,6 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.songslist);
-
 
         recyclerView = (RecyclerView) findViewById(R.id.recycler_view);
 
@@ -67,14 +69,16 @@ public class MainActivity extends AppCompatActivity {
 
     }
     public void putExtraItems(Intent intent, Songs songs){
-        List<Chords> chordsList =controller.chordsList;
-        intent.putStringArrayListExtra("lyric", songs.getLyrics());//lyric
+        List<Chords> nameChordslist=new ArrayList<>();
+        for(Chords c : songs.getChords())
+        {
+            nameChordslist.add(c);
+        }
+        intent.putStringArrayListExtra("lyric", songs.getLyrics());
         intent.putExtra("title", songs.getName());
         intent.putExtra("image", songs.getURL());
         intent.putExtra("artist", songs.getArtist());
-        intent.putExtra("chords", (Serializable) chordsList);
-
-
+        intent.putExtra("chords", (Serializable) nameChordslist);
     }
 
     public class GridSpacingItemDecoration extends RecyclerView.ItemDecoration {

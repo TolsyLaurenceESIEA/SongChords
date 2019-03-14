@@ -8,25 +8,12 @@
     android:background="@drawable/guitar_back"
     android:alpha="0.8">
 
-    <TextView
-        android:id="@+id/titletab"
-        android:layout_width="227dp"
-        android:layout_height="152dp"
-        android:layout_alignParentEnd="true"
-        android:layout_marginStart="8dp"
-        android:layout_marginTop="250dp"
-        android:layout_marginEnd="36dp"
-        android:layout_marginBottom="8dp"
-        android:gravity="center"
-        android:text="T'AS REUSSI PUTAIN!!!!"
-        android:textColor="#123467"
-        android:textSize="20sp"
-        android:textStyle="bold"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.6"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.0" />
+    <ImageView
+        android:id="@+id/chordurl"
+        android:layout_width="366dp"
+        android:layout_height="560dp"
+        tools:layout_editor_absoluteX="22dp"
+        tools:layout_editor_absoluteY="97dp"
+        tools:ignore="MissingConstraints" />
 
 </android.support.constraint.ConstraintLayout>

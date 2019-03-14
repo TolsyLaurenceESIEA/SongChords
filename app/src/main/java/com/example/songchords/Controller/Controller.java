@@ -56,7 +56,6 @@ public class Controller {
             public void onResponse(Call<SongsResponse> call, Response<SongsResponse> response) {
                 SongsResponse songsResponse = response.body();
                 listSongs = songsResponse.getSongs();
-                chordsList = songsResponse.getChords();
                 view.showList(listSongs);
             }
 

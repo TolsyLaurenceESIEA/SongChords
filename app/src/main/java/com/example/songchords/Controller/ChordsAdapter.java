@@ -5,7 +5,7 @@ import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Button;
+import android.widget.TextView;
 
 import com.example.songchords.Model.Chords;
 import com.example.songchords.R;
@@ -18,11 +18,11 @@ public class ChordsAdapter extends RecyclerView.Adapter<ChordsAdapter.MyViewHold
         private Context context;
 
         public class MyViewHolder extends RecyclerView.ViewHolder {
-            public Button name;
+            public TextView name;
 
             public MyViewHolder(View view) {
                 super(view);
-                name = (Button) view.findViewById(R.id.chordsName);
+                name = (TextView) view.findViewById(R.id.chordsName);
             }
         }
 
@@ -34,7 +34,7 @@ public class ChordsAdapter extends RecyclerView.Adapter<ChordsAdapter.MyViewHold
         @Override
         public MyViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
             View itemView = LayoutInflater.from(parent.getContext())
-                    .inflate(R.layout.activity_tab, parent, false);
+                    .inflate(R.layout.chords_name_layout, parent, false);
 
             return new MyViewHolder(itemView);
         }

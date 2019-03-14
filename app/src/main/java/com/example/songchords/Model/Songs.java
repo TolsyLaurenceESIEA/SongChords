@@ -2,10 +2,11 @@ package com.example.songchords.Model;
 
 import com.google.gson.annotations.SerializedName;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 
-public class Songs {
+public class Songs implements Serializable {
     @SerializedName("Name")
     private String Name;
     @SerializedName("Artist")

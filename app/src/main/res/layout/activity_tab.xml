@@ -56,19 +56,13 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
-    <Button
-        android:id="@+id/chordsName"
-        android:layout_width="50dp"
-        android:layout_height="50dp"
-        android:layout_marginTop="150dp"
-        android:layout_marginLeft="20dp"
-        />
-
     <android.support.v7.widget.RecyclerView
         android:id="@+id/recycler_view_chord"
         android:layout_width="match_parent"
         android:layout_height="50dp"
         android:layout_marginTop="150dp"
+        android:layout_marginLeft="15dp"
+        android:layout_marginRight="15dp"
         android:scrollbars="horizontal" />
 
     <ScrollView

@@ -15,14 +15,17 @@ import java.util.List;
 
 public class ChordsActivity extends AppCompatActivity {
 
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_chords);
 
-        String title = getIntent().getExtras().getString("title");
-        TextView songTitle = findViewById(R.id.titletab);
-        songTitle.setText(title);
+        String image = getIntent().getExtras().getString("chord_image");
+        ImageView songImage = findViewById(R.id.chordurl);
+        Glide.with(this)
+                .load(image)
+                .into(songImage);
 
     }
 }
