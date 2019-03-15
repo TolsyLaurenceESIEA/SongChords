@@ -13,7 +13,7 @@
         android:theme="@style/AppTheme">
         <activity android:name=".View.ChordsActivity"></activity>
         <activity android:name=".View.TabActivity" />
-        <activity android:name=".View.MainActivity">
+        <activity android:name=".View.SongsActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 

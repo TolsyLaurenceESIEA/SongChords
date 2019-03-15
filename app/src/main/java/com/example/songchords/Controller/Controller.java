@@ -6,7 +6,7 @@ import com.example.songchords.Model.Chords;
 import com.example.songchords.Model.Songs;
 import com.example.songchords.Model.SongsApi;
 import com.example.songchords.Model.SongsResponse;
-import com.example.songchords.View.MainActivity;
+import com.example.songchords.View.SongsActivity;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 
@@ -20,11 +20,11 @@ import retrofit2.converter.gson.GsonConverterFactory;
 
 public class Controller {
 
-    private MainActivity view;
+    private SongsActivity view;
     public List<Songs> listSongs;
     public List<Chords> chordsList;
 
-    public Controller(MainActivity view) {
+    public Controller(SongsActivity view) {
         this.view = view;
     }
 

@@ -3,7 +3,6 @@ package com.example.songchords.View;
 import android.content.Intent;
 import android.content.res.Resources;
 import android.graphics.Rect;
-import android.os.Build;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.DefaultItemAnimator;
@@ -11,7 +10,6 @@ import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.util.TypedValue;
 import android.view.View;
-import android.view.WindowManager;
 import android.widget.Toast;
 
 import com.example.songchords.Controller.Controller;
@@ -25,7 +23,7 @@ import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 
-public class MainActivity extends AppCompatActivity {
+public class SongsActivity extends AppCompatActivity {
 
     private RecyclerView recyclerView;
     private SongsAdapter songsAdapter;
@@ -61,7 +59,7 @@ public class MainActivity extends AppCompatActivity {
             public void onClick(View view, int position) {
                 Songs songs = listSongs.get(position);
                 Toast.makeText(getApplicationContext(), songs.getName(), Toast.LENGTH_SHORT).show();
-                Intent intent = new Intent(MainActivity.this, TabActivity.class);
+                Intent intent = new Intent(SongsActivity.this, TabActivity.class);
                 putExtraItems(intent,songs);
                 startActivity(intent);
             }

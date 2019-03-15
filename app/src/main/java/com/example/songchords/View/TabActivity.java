@@ -1,16 +1,12 @@
 package com.example.songchords.View;
 
 import android.content.Intent;
-import android.content.res.Resources;
-import android.graphics.Rect;
+import android.content.SharedPreferences;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.DefaultItemAnimator;
-import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
-import android.util.Log;
-import android.util.TypedValue;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
@@ -21,7 +17,6 @@ import com.example.songchords.Controller.TouchListener;
 import com.example.songchords.Model.Chords;
 import com.example.songchords.R;
 
-import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 
