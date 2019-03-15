@@ -1,4 +1,4 @@
-package com.example.songchords;
+package com.example.songchords.Controller;
 
 import android.content.Context;
 import android.support.v7.widget.RecyclerView;
@@ -9,7 +9,8 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.bumptech.glide.Glide;
-import com.bumptech.glide.request.RequestOptions;
+import com.example.songchords.R;
+import com.example.songchords.Model.Songs;
 
 import java.util.List;
 
@@ -50,9 +51,9 @@ public class SongsAdapter extends RecyclerView.Adapter<SongsAdapter.MyViewHolder
         holder.name.setText(songs.getName());
         holder.artist.setText(songs.getArtist());
 
-        /*Glide.with(context)
+        Glide.with(context)
                 .load(songs.getURL())
-                .into(holder.image);*/
+                .into(holder.image);
     }
 
     @Override

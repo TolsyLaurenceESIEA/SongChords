@@ -1,22 +1,29 @@
-package com.example.songchords;
+package com.example.songchords.View;
 
+import android.content.Intent;
 import android.content.res.Resources;
 import android.graphics.Rect;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.DefaultItemAnimator;
-import android.support.v7.widget.DividerItemDecoration;
 import android.support.v7.widget.GridLayoutManager;
-import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.util.TypedValue;
 import android.view.View;
-import android.widget.TextView;
+import android.widget.Toast;
 
+import com.example.songchords.Controller.Controller;
+import com.example.songchords.Model.Chords;
+import com.example.songchords.R;
+import com.example.songchords.Model.Songs;
+import com.example.songchords.Controller.SongsAdapter;
+import com.example.songchords.Controller.TouchListener;
+
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 
-public class MainActivity extends AppCompatActivity {
+public class SongsActivity extends AppCompatActivity {
 
     private RecyclerView recyclerView;
     private SongsAdapter songsAdapter;
@@ -28,7 +35,6 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.songslist);
 
-
         recyclerView = (RecyclerView) findViewById(R.id.recycler_view);
 
         controller = new Controller(this);
@@ -36,6 +42,7 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void showList (final List<Songs> listSongs){
+
         songsAdapter = new SongsAdapter(this, listSongs);
         recyclerView.setHasFixedSize(true);
 
@@ -45,16 +52,31 @@ public class MainActivity extends AppCompatActivity {
         recyclerView.addItemDecoration(new GridSpacingItemDecoration(2, dpToPx(10), true));
         // define an adapter
 
-        /*RecyclerView.LayoutManager mLayoutManager = new LinearLayoutManager(this);
-        recyclerView.setLayoutManager(mLayoutManager);
-        recyclerView.setItemAnimator(new DefaultItemAnimator());
-        recyclerView.addItemDecoration(new DividerItemDecoration(this, LinearLayoutManager.VERTICAL));*/
-
         recyclerView.setAdapter(songsAdapter);
 
+        recyclerView.addOnItemTouchListener(new TouchListener(getApplicationContext(), recyclerView, new TouchListener.ClickListener() {
+            @Override
+            public void onClick(View view, int position) {
+                Songs songs = listSongs.get(position);
+                Toast.makeText(getApplicationContext(), songs.getName(), Toast.LENGTH_SHORT).show();
+                Intent intent = new Intent(SongsActivity.this, TabActivity.class);
+                putExtraItems(intent,songs);
+                startActivity(intent);
+            }
+        }));
 
-        //setContentView(R.layout.songdescription);
-
+    }
+    public void putExtraItems(Intent intent, Songs songs){
+        List<Chords> nameChordslist=new ArrayList<>();
+        for(Chords c : songs.getChords())
+        {
+            nameChordslist.add(c);
+        }
+        intent.putStringArrayListExtra("lyric", songs.getLyrics());
+        intent.putExtra("title", songs.getName());
+        intent.putExtra("image", songs.getURL());
+        intent.putExtra("artist", songs.getArtist());
+        intent.putExtra("chords", (Serializable) nameChordslist);
     }
 
     public class GridSpacingItemDecoration extends RecyclerView.ItemDecoration {

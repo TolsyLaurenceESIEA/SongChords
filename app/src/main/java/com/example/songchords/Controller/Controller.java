@@ -1,12 +1,15 @@
-package com.example.songchords;
+package com.example.songchords.Controller;
 
 import android.util.Log;
-import android.widget.TextView;
 
+import com.example.songchords.Model.Chords;
+import com.example.songchords.Model.Songs;
+import com.example.songchords.Model.SongsApi;
+import com.example.songchords.Model.SongsResponse;
+import com.example.songchords.View.SongsActivity;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 
-import java.util.ArrayList;
 import java.util.List;
 
 import retrofit2.Call;
@@ -17,9 +20,11 @@ import retrofit2.converter.gson.GsonConverterFactory;
 
 public class Controller {
 
-    private MainActivity view;
+    private SongsActivity view;
+    public List<Songs> listSongs;
+    public List<Chords> chordsList;
 
-    public Controller(MainActivity view) {
+    public Controller(SongsActivity view) {
         this.view = view;
     }
 
@@ -37,7 +42,7 @@ public class Controller {
 
         //On crée un objet retrofit
         Retrofit retrofit = new Retrofit.Builder()
-                .baseUrl("https://raw.githubusercontent.com/Metasilveur/MobileFireEmblem/master/")
+                .baseUrl("https://raw.githubusercontent.com/TolsyLaurenceESIEA/TolsyLaurenceESIEA.github.io/master/")
                 .addConverterFactory(GsonConverterFactory.create(gson))
                 .build();
 
@@ -50,13 +55,8 @@ public class Controller {
             @Override
             public void onResponse(Call<SongsResponse> call, Response<SongsResponse> response) {
                 SongsResponse songsResponse = response.body();
-                List<Songs> listSongs = songsResponse.getSongs();
-                /*List<Songs> listSongs = new ArrayList<>();
-                listSongs.add(new Songs("azerty","qwerty","https://www.elastic.co/assets/bltada7771f270d08f6/enhanced-buzz-1492-1379411828-15.jpg"));
-                listSongs.add(new Songs("azerty","qwerty","https://www.elastic.co/assets/bltada7771f270d08f6/enhanced-buzz-1492-1379411828-15.jpg"));
-                listSongs.add(new Songs("azerty","qwerty","https://www.elastic.co/assets/bltada7771f270d08f6/enhanced-buzz-1492-1379411828-15.jpg"));
-                listSongs.add(new Songs("azerty","qwerty","https://www.elastic.co/assets/bltada7771f270d08f6/enhanced-buzz-1492-1379411828-15.jpg"));
-                */view.showList(listSongs);
+                listSongs = songsResponse.getSongs();
+                view.showList(listSongs);
             }
 
             @Override
