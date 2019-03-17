@@ -46,7 +46,7 @@ public class Controller {
                 .addConverterFactory(GsonConverterFactory.create(gson))
                 .build();
 
-        //On crée notre instance de notre RestAPI Pokemon.
+        //On crée notre instance de notre RestAPI de SongsChords.
         SongsApi restApi = retrofit.create(SongsApi.class);
 
 
