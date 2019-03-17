@@ -36,11 +36,11 @@ public class ResearchActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_research);
 
-        /*Intent intent = getIntent();
+        Intent intent = getIntent();
         if (Intent.ACTION_SEARCH.equals(intent.getAction())) {
             String query = intent.getStringExtra(SearchManager.QUERY);
             doMySearch(query);
-        }*/
+        }
 
         final ImageButton button = findViewById(R.id.favorite);
         button.setOnClickListener(new View.OnClickListener() {
@@ -52,15 +52,15 @@ public class ResearchActivity extends AppCompatActivity {
         });
     }
 
-    /*private void doMySearch(String s) {
+    private void doMySearch(String s) {
 
         /*Une fois la recherche trouvée, il faut afficher les elements de la list, utilisation de RecyclerView
         Attention, ne pas oublier de reprendre la meme structure que songsactivity pour la liste mais pas la même pour l'affichage de du recycler
         view étant donné qu'il y a la barre de recherche pour l'un et la place pour l'icone des favoris et recherche pour l'autre.f
         */
-    //}
+    }
 
-    /*public void showList (final List<Songs> listSongs){
+    public void showList (final List<Songs> listSongs){
 
         recyclerView = (RecyclerView) findViewById(R.id.recycler_view_research);
         songsAdapter = new SongsAdapter(this, listSongs);
@@ -125,5 +125,5 @@ public class ResearchActivity extends AppCompatActivity {
     private int dpToPx(int dp) {
         Resources r = getResources();
         return Math.round(TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_DIP, dp, r.getDisplayMetrics()));
-    }*/
+    }
 }
