@@ -67,6 +67,7 @@ public class TabActivity extends AppCompatActivity {
                 else
                 {
                     button_fav.setBackground(ContextCompat.getDrawable(getApplicationContext(), R.drawable.favoris));
+                    fav_on = false;
                 }
             }
         });
@@ -83,6 +84,8 @@ public class TabActivity extends AppCompatActivity {
         chordsList = (List<Chords>) intent.getSerializableExtra("chords");
 
         this.showList(chordsList);
+
+        //while ()
 
     }
 
