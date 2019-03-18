@@ -1,67 +1,68 @@
 package com.example.songchords.View;
 
+import android.app.SearchManager;
 import android.content.Intent;
 import android.content.res.Resources;
 import android.graphics.Rect;
-import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
+import android.os.Bundle;
 import android.support.v7.widget.DefaultItemAnimator;
 import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.util.TypedValue;
 import android.view.View;
-import android.widget.Button;
 import android.widget.ImageButton;
 import android.widget.Toast;
 
 import com.example.songchords.Controller.Controller;
-import com.example.songchords.Model.Chords;
-import com.example.songchords.R;
-import com.example.songchords.Model.Songs;
 import com.example.songchords.Controller.SongsAdapter;
 import com.example.songchords.Controller.TouchListener;
+import com.example.songchords.Model.Chords;
+import com.example.songchords.Model.Songs;
+import com.example.songchords.R;
 
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 
-public class SongsActivity extends AppCompatActivity {
+public class ResearchActivity extends AppCompatActivity {
 
     private RecyclerView recyclerView;
     private SongsAdapter songsAdapter;
     private RecyclerView.LayoutManager layoutManager;
-    private Controller controller;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.songslist);
+        setContentView(R.layout.activity_research);
 
-        recyclerView = (RecyclerView) findViewById(R.id.recycler_view);
-        controller = new Controller(this);
-        controller.onCreate();
+        Intent intent = getIntent();
+        if (Intent.ACTION_SEARCH.equals(intent.getAction())) {
+            String query = intent.getStringExtra(SearchManager.QUERY);
+            doMySearch(query);
+        }
 
-        final ImageButton button_research = findViewById(R.id.research);
-        button_research.setOnClickListener(new View.OnClickListener() {
+        final ImageButton button = findViewById(R.id.favorite);
+        button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent_song = new Intent(SongsActivity.this, ResearchActivity.class);
-                startActivity(intent_song);
-            }
-        });
-
-        final ImageButton button_fav = findViewById(R.id.fav);
-        button_fav.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intent_song = new Intent(SongsActivity.this, FavorisActivity.class);
+                Intent intent_song = new Intent(ResearchActivity.this, FavorisActivity.class);
                 startActivity(intent_song);
             }
         });
     }
 
+    private void doMySearch(String s) {
+
+        /*Une fois la recherche trouvée, il faut afficher les elements de la list, utilisation de RecyclerView
+        Attention, ne pas oublier de reprendre la meme structure que songsactivity pour la liste mais pas la même pour l'affichage de du recycler
+        view étant donné qu'il y a la barre de recherche pour l'un et la place pour l'icone des favoris et recherche pour l'autre.f
+        */
+    }
+
     public void showList (final List<Songs> listSongs){
 
+        recyclerView = (RecyclerView) findViewById(R.id.recycler_view_research);
         songsAdapter = new SongsAdapter(this, listSongs);
         recyclerView.setHasFixedSize(true);
 
@@ -78,24 +79,11 @@ public class SongsActivity extends AppCompatActivity {
             public void onClick(View view, int position) {
                 Songs songs = listSongs.get(position);
                 Toast.makeText(getApplicationContext(), songs.getName(), Toast.LENGTH_SHORT).show();
-                Intent intent_song = new Intent(SongsActivity.this, TabActivity.class);
-                putExtraItems(intent_song,songs);
+                Intent intent_song = new Intent(ResearchActivity.this, TabActivity.class);
                 startActivity(intent_song);
             }
         }));
 
-    }
-    public void putExtraItems(Intent intent, Songs songs){
-        List<Chords> nameChordslist=new ArrayList<>();
-        for(Chords c : songs.getChords())
-        {
-            nameChordslist.add(c);
-        }
-        intent.putStringArrayListExtra("lyric", songs.getLyrics());
-        intent.putExtra("title", songs.getName());
-        intent.putExtra("image", songs.getURL());
-        intent.putExtra("artist", songs.getArtist());
-        intent.putExtra("chords", (Serializable) nameChordslist);
     }
 
     public class GridSpacingItemDecoration extends RecyclerView.ItemDecoration {
@@ -133,9 +121,7 @@ public class SongsActivity extends AppCompatActivity {
         }
     }
 
-    /**
-     * Converting dp to pixel
-     */
+
     private int dpToPx(int dp) {
         Resources r = getResources();
         return Math.round(TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_DIP, dp, r.getDisplayMetrics()));
