@@ -22,14 +22,6 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
-    <ImageButton
-        android:id="@+id/fav_tab"
-        android:layout_width="50dp"
-        android:layout_height="50dp"
-        android:layout_marginStart="300dp"
-        android:layout_marginTop="80dp"
-        android:background="@drawable/favoris" />
-
     <TextView
         android:id="@+id/titletab"
         android:layout_width="227dp"

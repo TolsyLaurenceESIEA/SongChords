@@ -9,19 +9,24 @@
     android:alpha="0.8"
     >
 
-    <ImageButton
-        android:id="@+id/favorite"
-        android:layout_width="50dp"
+    <EditText
+        android:id="@+id/research"
+        android:layout_width="350dp"
         android:layout_height="50dp"
-        android:layout_marginStart="300dp"
-        android:layout_marginTop="15dp"
-        android:background="@drawable/favoris_or"/>
+        android:layout_marginStart="25dp" />
+
+    <Button
+        android:id="@+id/last"
+        android:layout_width="350dp"
+        android:layout_height="50dp"
+        android:layout_marginStart="25dp"
+        android:layout_marginTop="55dp"/>
 
     <android.support.v7.widget.RecyclerView
         android:id="@+id/recycler_view_research"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:scrollbars="vertical"
-        android:layout_marginTop="80dp"/>
+        android:layout_marginTop="110dp"/>
 
 </RelativeLayout>

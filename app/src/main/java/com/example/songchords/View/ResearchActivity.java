@@ -2,15 +2,21 @@ package com.example.songchords.View;
 
 import android.app.SearchManager;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.content.res.Resources;
 import android.graphics.Rect;
+import android.preference.PreferenceManager;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.DefaultItemAnimator;
 import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.text.Editable;
+import android.text.TextWatcher;
 import android.util.TypedValue;
 import android.view.View;
+import android.widget.Button;
+import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.Toast;
 
@@ -30,34 +36,103 @@ public class ResearchActivity extends AppCompatActivity {
     private RecyclerView recyclerView;
     private SongsAdapter songsAdapter;
     private RecyclerView.LayoutManager layoutManager;
+    private String found;
+    private boolean the_research;
+    private List<Songs> result;
+    private List<Songs> listSongs = new ArrayList<Songs>();
+    private EditText search;
+    private Button last;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_research);
 
-        Intent intent = getIntent();
-        if (Intent.ACTION_SEARCH.equals(intent.getAction())) {
-            String query = intent.getStringExtra(SearchManager.QUERY);
-            doMySearch(query);
-        }
+        last =(Button) findViewById(R.id.last);
+        search = (EditText) findViewById(R.id.research);
 
-        final ImageButton button = findViewById(R.id.favorite);
-        button.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intent_song = new Intent(ResearchActivity.this, FavorisActivity.class);
-                startActivity(intent_song);
-            }
-        });
+        recyclerView = (RecyclerView) findViewById(R.id.recycler_view_research);
+
+        Intent intent = getIntent();
+        listSongs = (List<Songs>) intent.getSerializableExtra("songs");
+
+        doMySearch(listSongs);
+
+        this.showList(listSongs);
     }
 
-    private void doMySearch(String s) {
+    private void doMySearch(List<Songs> s) {
 
-        /*Une fois la recherche trouvée, il faut afficher les elements de la list, utilisation de RecyclerView
-        Attention, ne pas oublier de reprendre la meme structure que songsactivity pour la liste mais pas la même pour l'affichage de du recycler
-        view étant donné qu'il y a la barre de recherche pour l'un et la place pour l'icone des favoris et recherche pour l'autre.f
-        */
+        search.addTextChangedListener(new TextWatcher() {
+            @Override
+            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
+
+            }
+
+            @Override
+            public void onTextChanged(CharSequence s, int start, int before, int count) {
+
+            }
+
+            @Override
+            public void afterTextChanged(Editable s) {
+
+                found=s.toString().toLowerCase();
+
+                if(the_research)
+                {
+                    result.clear();
+                }
+                if (found!=null)
+                {
+                    the_research=true;
+                    loading();
+                }
+            }
+        });
+
+    }
+
+    public void research()
+    {
+        result=new ArrayList<>();
+        for(Songs song :listSongs)
+        {
+            if(song.getName().toLowerCase().contains(found)){
+                result.add(song);
+            }
+            if(song.getArtist().toLowerCase().contains(found)){
+                result.add(song);
+            }
+
+        }
+    }
+
+    public void loading()
+    {
+        if (the_research)
+        {
+            research();
+            songsAdapter = new SongsAdapter(this, result);
+            songsAdapter.notifyDataSetChanged();
+            recyclerView.setAdapter(songsAdapter);
+            recyclerView.invalidate();
+            recyclerView.removeAllViews();
+        }
+    }
+
+    public void get_cache(View view)
+    {
+        SharedPreferences getcache = PreferenceManager.getDefaultSharedPreferences(getApplicationContext());
+        found = getcache.getString("last", "").toLowerCase();
+        loading();
+    }
+
+    public void put_cache (String s)
+    {
+        SharedPreferences.Editor save_data= PreferenceManager.getDefaultSharedPreferences(getApplicationContext()).edit();
+        save_data.putString("last", s);
+        save_data.apply();
     }
 
     public void showList (final List<Songs> listSongs){
