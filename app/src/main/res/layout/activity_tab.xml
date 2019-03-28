@@ -6,7 +6,7 @@
     android:layout_height="match_parent"
     tools:context=".View.TabActivity"
     android:background="@drawable/guitar_back"
-    android:alpha="0.8">
+    android:alpha="0.7">
 
     <ImageView
         android:id="@+id/imagetab"

@@ -13,14 +13,19 @@
         android:id="@+id/research"
         android:layout_width="350dp"
         android:layout_height="50dp"
-        android:layout_marginStart="25dp" />
+        android:layout_marginStart="25dp"
+        android:textColor="@color/white"
+        android:gravity="center"
+        android:text="Songs"/>
 
     <Button
         android:id="@+id/last"
         android:layout_width="350dp"
         android:layout_height="50dp"
         android:layout_marginStart="25dp"
-        android:layout_marginTop="55dp"/>
+        android:layout_marginTop="55dp"
+        android:onClick="get_cache"
+        android:text="Last Research"/>
 
     <android.support.v7.widget.RecyclerView
         android:id="@+id/recycler_view_research"

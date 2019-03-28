@@ -41,20 +41,33 @@ public class ResearchActivity extends AppCompatActivity {
     private List<Songs> result;
     private List<Songs> listSongs = new ArrayList<Songs>();
     private EditText search;
-    private Button last;
+    private Button last_button;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_research);
 
-        last =(Button) findViewById(R.id.last);
+        last_button =(Button) findViewById(R.id.last);
         search = (EditText) findViewById(R.id.research);
+        search.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                search.getText().clear();
+            }
+        });
 
         recyclerView = (RecyclerView) findViewById(R.id.recycler_view_research);
 
         Intent intent = getIntent();
         listSongs = (List<Songs>) intent.getSerializableExtra("songs");
+
+        last_button.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                get_cache(v);
+            }
+        });
 
         doMySearch(listSongs);
 
@@ -98,13 +111,9 @@ public class ResearchActivity extends AppCompatActivity {
         result=new ArrayList<>();
         for(Songs song :listSongs)
         {
-            if(song.getName().toLowerCase().contains(found)){
+            if((song.getName().toLowerCase().contains(found))||(song.getArtist().toLowerCase().contains(found))){
                 result.add(song);
             }
-            if(song.getArtist().toLowerCase().contains(found)){
-                result.add(song);
-            }
-
         }
     }
 
@@ -138,7 +147,6 @@ public class ResearchActivity extends AppCompatActivity {
     public void showList (final List<Songs> listSongs){
 
         recyclerView = (RecyclerView) findViewById(R.id.recycler_view_research);
-        songsAdapter = new SongsAdapter(this, listSongs);
         recyclerView.setHasFixedSize(true);
 
         layoutManager = new GridLayoutManager(this, 2);
@@ -155,10 +163,26 @@ public class ResearchActivity extends AppCompatActivity {
                 Songs songs = listSongs.get(position);
                 Toast.makeText(getApplicationContext(), songs.getName(), Toast.LENGTH_SHORT).show();
                 Intent intent_song = new Intent(ResearchActivity.this, TabActivity.class);
+                putExtraItems(intent_song,songs);
+                put_cache(songs.getName());
                 startActivity(intent_song);
             }
         }));
 
+    }
+
+    public void putExtraItems(Intent intent, Songs songs){
+        List<Chords> nameChordslist=new ArrayList<>();
+        for(Chords c : songs.getChords())
+        {
+            nameChordslist.add(c);
+        }
+        intent.putStringArrayListExtra("lyric", songs.getLyrics());
+        intent.putExtra("title", songs.getName());
+        intent.putExtra("image", songs.getURL());
+        intent.putExtra("artist", songs.getArtist());
+        intent.putExtra("chords", (Serializable) nameChordslist);
+        intent.putExtra("songs",songs);
     }
 
     public class GridSpacingItemDecoration extends RecyclerView.ItemDecoration {

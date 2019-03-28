@@ -13,7 +13,8 @@
         android:layout_height="50dp"
         android:layout_marginStart="50dp"
         android:layout_marginTop="15dp"
-        android:background="@drawable/favoris" />
+        android:background="@drawable/search" />
+
     <TextView
         android:layout_width="110dp"
         android:layout_height="50dp"
@@ -23,6 +24,15 @@
         android:textColor="@color/white"
         android:gravity="center"
         android:textSize="20dp"/>
+
+    <pl.droidsonroids.gif.GifImageView
+        android:layout_width="98dp"
+        android:layout_height="104dp"
+        android:layout_alignEnd="@+id/recycler_view"
+        android:layout_alignBottom="@+id/recycler_view"
+        android:layout_marginEnd="32dp"
+        android:layout_marginBottom="627dp"
+        android:src="@drawable/player" />
 
     <android.support.v7.widget.RecyclerView
         android:id="@+id/recycler_view"
