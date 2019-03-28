@@ -22,7 +22,6 @@ public class Controller {
 
     private SongsActivity view;
     public List<Songs> listSongs;
-    public List<Chords> chordsList;
 
     public Controller(SongsActivity view) {
         this.view = view;

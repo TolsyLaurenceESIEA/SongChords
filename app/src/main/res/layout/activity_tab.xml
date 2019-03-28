@@ -6,7 +6,7 @@
     android:layout_height="match_parent"
     tools:context=".View.TabActivity"
     android:background="@drawable/guitar_back"
-    android:alpha="0.8">
+    android:alpha="0.7">
 
     <ImageView
         android:id="@+id/imagetab"
@@ -21,14 +21,6 @@
         android:layout_weight="70"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
-
-    <ImageButton
-        android:id="@+id/fav_tab"
-        android:layout_width="50dp"
-        android:layout_height="50dp"
-        android:layout_marginStart="300dp"
-        android:layout_marginTop="80dp"
-        android:background="@drawable/favoris" />
 
     <TextView
         android:id="@+id/titletab"

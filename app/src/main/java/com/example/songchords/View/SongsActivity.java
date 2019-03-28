@@ -40,24 +40,6 @@ public class SongsActivity extends AppCompatActivity {
         recyclerView = (RecyclerView) findViewById(R.id.recycler_view);
         controller = new Controller(this);
         controller.onCreate();
-
-        final ImageButton button_research = findViewById(R.id.research);
-        button_research.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intent_song = new Intent(SongsActivity.this, ResearchActivity.class);
-                startActivity(intent_song);
-            }
-        });
-
-        final ImageButton button_fav = findViewById(R.id.fav);
-        button_fav.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intent_song = new Intent(SongsActivity.this, FavorisActivity.class);
-                startActivity(intent_song);
-            }
-        });
     }
 
     public void showList (final List<Songs> listSongs){
@@ -72,6 +54,16 @@ public class SongsActivity extends AppCompatActivity {
         // define an adapter
 
         recyclerView.setAdapter(songsAdapter);
+
+        final ImageButton button_research = findViewById(R.id.research);
+        button_research.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent_search = new Intent(SongsActivity.this, ResearchActivity.class);
+                intent_search.putExtra("songs",(Serializable) listSongs);
+                startActivity(intent_search);
+            }
+        });
 
         recyclerView.addOnItemTouchListener(new TouchListener(getApplicationContext(), recyclerView, new TouchListener.ClickListener() {
             @Override
@@ -96,6 +88,7 @@ public class SongsActivity extends AppCompatActivity {
         intent.putExtra("image", songs.getURL());
         intent.putExtra("artist", songs.getArtist());
         intent.putExtra("chords", (Serializable) nameChordslist);
+        intent.putExtra("songs",songs);
     }
 
     public class GridSpacingItemDecoration extends RecyclerView.ItemDecoration {
