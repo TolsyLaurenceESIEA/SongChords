@@ -23,7 +23,9 @@ Il était également possible d'insérer dans son projet :
 
 Lors du lancement de l'application, on se retrouve sur l'écran avec les pochettes d'albums.
 
-![](https://raw.githubusercontent.com/TolsyLaurenceESIEA/gif/master/recyclerview.gif)
+<p align="center">
+<img src="https://raw.githubusercontent.com/TolsyLaurenceESIEA/gif/master/recyclerview.gif">
+  </p>
 
 Une fois que l'on a cliqué sur une chanson, on arrive sur une autre activité. Cette dernière correspond à la tablature de la chanson. On peut voir le titre de la chanson, l'artiste et la nécessité d'un capodastre ou non, les accords et la tablature avec les paroles.
 
