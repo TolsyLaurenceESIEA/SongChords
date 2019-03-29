@@ -25,14 +25,18 @@ Lors du lancement de l'application, on se retrouve sur l'écran avec les pochett
 
 <p align="center">
 <img src="https://raw.githubusercontent.com/TolsyLaurenceESIEA/gif/master/recyclerview.gif">
-  </p>
+</p>
 
 Une fois que l'on a cliqué sur une chanson, on arrive sur une autre activité. Cette dernière correspond à la tablature de la chanson. On peut voir le titre de la chanson, l'artiste et la nécessité d'un capodastre ou non, les accords et la tablature avec les paroles.
 
-![](https://raw.githubusercontent.com/TolsyLaurenceESIEA/gif/master/tabactivity.gif)
+<p align="center">
+<img src="https://raw.githubusercontent.com/TolsyLaurenceESIEA/gif/master/tabactivity.gif">
+</p>
 Si un joueur ne connais pas un accord il peut cliquer sur le nom des accords, cela le mènera à une troisième page qui affichera l'accord, accompagné d'un petit gif.
 
-![](https://raw.githubusercontent.com/TolsyLaurenceESIEA/gif/master/chordactivity.gif)
+<p align="center">
+<img src="https://raw.githubusercontent.com/TolsyLaurenceESIEA/gif/master/chordactivity.gif">
+</p>
 ### Api Rest
 Afin de pouvoir utiliser cette application, j'ai créer un fichier json comme API.
 <https://raw.githubusercontent.com/TolsyLaurenceESIEA/Songs/master/songsapi.json>
@@ -42,12 +46,16 @@ Afin de pouvoir utiliser cette application, j'ai créer un fichier json comme AP
 J'ai implémenté une fonction de recherche, qui permettra à l'utilisateur de chercher une chanson en fonction du titre ou de l'artiste.
 J'ai utilisé le stockage en cache afin de garder la dernière recherche de l'utilisateur.
 
-![](https://raw.githubusercontent.com/TolsyLaurenceESIEA/gif/master/Researchactivity.gif)
+<p align="center">
+<img src="https://raw.githubusercontent.com/TolsyLaurenceESIEA/gif/master/Researchactivity.gif">
+</p>
 
 ### Autres fonctionnalités
 
 * Les notifications push ont également été intégré dans le projet.
-![](https://raw.githubusercontent.com/TolsyLaurenceESIEA/gif/master/notif.png)
+<p align="center">
+<img src="https://raw.githubusercontent.com/TolsyLaurenceESIEA/gif/master/notif.png">
+</p>
 
 * Vous consterez que ce projet comporte une architecture MVC, ainsi que l'utilisation du gitflow (branche master et developer)
 
