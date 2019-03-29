@@ -43,6 +43,10 @@ public class TabActivity extends AppCompatActivity {
         TextView songTitle = findViewById(R.id.titletab);
         songTitle.setText(title);
 
+        String capo = getIntent().getExtras().getString("capo");
+        TextView caposong = findViewById(R.id.capo);
+        caposong.setText(capo);
+
         String image = getIntent().getExtras().getString("image");
         ImageView songImage = findViewById(R.id.imagetab);
         Glide.with(this)

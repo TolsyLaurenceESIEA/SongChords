@@ -55,7 +55,16 @@ public class SongsActivity extends AppCompatActivity {
 
         recyclerView.setAdapter(songsAdapter);
 
-        final ImageButton button_research = findViewById(R.id.research);
+        final ImageButton image_button_research = findViewById(R.id.research);
+        image_button_research.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent_search = new Intent(SongsActivity.this, ResearchActivity.class);
+                intent_search.putExtra("songs",(Serializable) listSongs);
+                startActivity(intent_search);
+            }
+        });
+        final Button button_research = findViewById(R.id.search_text);
         button_research.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -87,6 +96,7 @@ public class SongsActivity extends AppCompatActivity {
         intent.putExtra("title", songs.getName());
         intent.putExtra("image", songs.getURL());
         intent.putExtra("artist", songs.getArtist());
+        intent.putExtra("capo", songs.getCapo());
         intent.putExtra("chords", (Serializable) nameChordslist);
         intent.putExtra("songs",songs);
     }
