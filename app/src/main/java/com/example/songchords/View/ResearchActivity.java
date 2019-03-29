@@ -69,6 +69,7 @@ public class ResearchActivity extends AppCompatActivity {
             }
         });
 
+
         doMySearch(listSongs);
 
         this.showList(listSongs);
@@ -181,6 +182,7 @@ public class ResearchActivity extends AppCompatActivity {
         intent.putExtra("title", songs.getName());
         intent.putExtra("image", songs.getURL());
         intent.putExtra("artist", songs.getArtist());
+        intent.putExtra("capo", songs.getCapo());
         intent.putExtra("chords", (Serializable) nameChordslist);
         intent.putExtra("songs",songs);
     }
