@@ -39,10 +39,12 @@ J'ai utilisé le stockage en cache afin de garder la dernière recherche de l'ut
 
 ![](https://raw.githubusercontent.com/TolsyLaurenceESIEA/gif/master/Researchactivity.gif)
 
-### Notification Push
+### Autres fonctionnalités
 
-Les notifications push ont également été intégré dans le projet.
+* Les notifications push ont également été intégré dans le projet.
 ![](https://raw.githubusercontent.com/TolsyLaurenceESIEA/gif/master/notif.png)
+
+* Vous consterez que ce projet comporte une architecture MVC, ainsi que l'utilisation du gitflow (branche master et developer)
 
 
 
