@@ -1,4 +1,7 @@
-# Programmation mobile - Song Chords
+# Programmation mobile - Song Chords 
+<p align="center">
+<img src="https://thumbs.gfycat.com/FirsthandCalculatingHermitcrab-max-1mb.gif">
+</p>
 
 ## Présentation 
 Dans le cadre de la troisième année, nous avons dû réaliser une application mobile.
